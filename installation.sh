@@ -12,9 +12,12 @@ sudo apt install -y bluetooth bluez python3-bluez
 echo "Installing DBus dependencies..."
 sudo apt-get update -y && sudo apt-get install -y libdbus-1{,-dev}
 
-# Install Python dependencies with pip
-echo "Installing Python dependencies with pip..."
-pip install --quiet --yes omxplayer-wrapper
-sudo pip3 install --quiet --yes pause
+# Install OMXPlayer
+echo "Installing OMXPlayer..."
+sudo apt install -y omxplayer
+
+# Install Python dependencies with pip3
+echo "Installing Python dependencies with pip3..."
+sudo pip3 install --quiet --yes omxplayer-wrapper pause
 
 echo "All dependencies have been installed successfully!"
