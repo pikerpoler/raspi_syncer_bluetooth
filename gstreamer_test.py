@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-# from gi.repository import Gtk as pygtk, Gst as pygst
+from gi.repository import Gtk as gtk
 from constants import VIDEO_PATH
 
 # pygst.require("0.10")
