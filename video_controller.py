@@ -1,5 +1,4 @@
 from omxplayer.player import OMXPlayer
-import vlc
 from pathlib import Path
 from time import sleep
 import pause
@@ -16,9 +15,7 @@ def parse_time(time_string):
 class Video:
 
     def __init__(self, video_path):
-        # self.player = OMXPlayer(Path(video_path), args=["--loop"])
-        self.player = vlc.MediaPlayer(Path(video_path))
-        self.player.play()
+        self.player = OMXPlayer(Path(video_path), args=["--loop"])
         # sleep(3)
         self.player.set_position(0)
         # self.player.pause()

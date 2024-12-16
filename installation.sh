@@ -12,11 +12,13 @@ sudo apt install -y bluetooth bluez python3-bluez
 echo "Installing OMXPlayer..."
 sudo apt install -y omxplayer
 
-sudo apt install -y vlc
-sudo pip3 install --quiet python-vlc
+sudo apt install gstreamer1.0-tools gstreamer1.0-plugins-base \
+    gstreamer1.0-plugins-good gstreamer1.0-plugins-bad \
+    gstreamer1.0-omx
+pip3 install --quiet pygobject
 
 # Install Python dependencies with pip3
 echo "Installing Python dependencies with pip3..."
-sudo pip3 install --quiet --yes omxplayer-wrapper pause
+sudo pip3 install --quiet omxplayer-wrapper pause
 
 echo "All dependencies have been installed successfully!"
