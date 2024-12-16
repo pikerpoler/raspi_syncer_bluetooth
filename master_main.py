@@ -41,15 +41,16 @@ def main():
         send_signal(START)
         print("sent start signal")
 
-    def quit():
-        video.quit()
+    def quit_foo():
         print("sending quit signal")
+        video.quit()
         send_signal(QUIT)
         sleep(1)
+        print("exiting")
         exit()
 
     start_button.when_pressed = start
-    quit_button.when_pressed = quit
+    quit_button.when_pressed = quit_foo
 
     while True:
         pass
