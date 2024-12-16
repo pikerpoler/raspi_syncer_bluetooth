@@ -12,6 +12,9 @@ sudo apt install -y bluetooth bluez python3-bluez
 echo "Installing OMXPlayer..."
 sudo apt install -y omxplayer
 
+sudo apt install -y vlc
+sudo pip3 install --quiet --yes python-vlc
+
 # Install Python dependencies with pip3
 echo "Installing Python dependencies with pip3..."
 sudo pip3 install --quiet --yes omxplayer-wrapper pause
