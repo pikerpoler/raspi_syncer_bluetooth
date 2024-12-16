@@ -5,7 +5,7 @@ from constants import VIDEO_PATH
 # pygst.require("0.10")
 import gst
 
-import pygtk
+# import pygtk
 
 # pygtk.require("2.0")
 import gtk
