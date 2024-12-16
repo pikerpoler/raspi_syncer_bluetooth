@@ -2,12 +2,12 @@
 import pygst
 from constants import VIDEO_PATH
 
-pygst.require("0.10")
+# pygst.require("0.10")
 import gst
 
 import pygtk
 
-pygtk.require("2.0")
+# pygtk.require("2.0")
 import gtk
 
 # this is very important, without this, callbacks from gstreamer thread
