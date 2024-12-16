@@ -1,6 +1,7 @@
 import time
 from time import sleep
 from gpiozero import Button, LED
+from signal import pause
 
 from video_controller import Video
 from constants import VIDEO_PATH
@@ -35,7 +36,7 @@ def main():
 
     print("starting main loop")
     while True:
-        pass
+        pause
 
 
 if __name__ == "__main__":
