@@ -23,6 +23,12 @@ sudo apt install -y omxplayer
 
 # pip3 install --quiet pygobject
 
+
+wget http://archive.raspberrypi.org/debian/pool/main/o/omxplayer/omxplayer_20190723+gitf543a0d-1_armhf.deb
+sudo dpkg -i omxplayer_20190723+gitf543a0d-1_armhf.deb
+sudo apt-get -f install
+rm omxplayer_20190723+gitf543a0d-1_armhf.deb
+
 # Install Python dependencies with pip3
 echo "Installing Python dependencies with pip3..."
 sudo pip3 install --quiet omxplayer-wrapper pause
