@@ -43,8 +43,8 @@ def main():
 
     def quit_foo():
         print("sending quit signal")
-        video.quit()
         send_signal(QUIT)
+        video.quit()
         sleep(1)
         print("exiting")
         exit()
