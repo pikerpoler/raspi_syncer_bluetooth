@@ -5,25 +5,11 @@ import time
 from gpiozero import Button
 from signal import pause
 
-from video_controller import Video
+from utils import make_device_discoverable
 from constants import communication_port, START
 
 INPUT_PIN = 17
 last_event = time.time()
-
-
-def make_device_discoverable():
-    """
-    Automates the process of making the Raspberry Pi discoverable via Bluetooth.
-    """
-    try:
-        # Start bluetoothctl in subprocess
-        subprocess.run(["bluetoothctl", "power", "on"], check=True)
-        subprocess.run(["bluetoothctl", "discoverable", "on"], check=True)
-        subprocess.run(["bluetoothctl", "pairable", "on"], check=True)
-        print("Device is now discoverable and pairable.")
-    except subprocess.CalledProcessError as e:
-        print(f"Error enabling discoverability: {e}")
 
 
 def connect_to_server():

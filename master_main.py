@@ -3,6 +3,7 @@ import bluetooth
 from gpiozero import Button
 
 from video_controller import Video
+from utils import make_device_discoverable
 from constants import slave_mac_adresses, communication_port, START, QUIT, VIDEO_PATH
 
 START_PIN = 18
@@ -30,6 +31,7 @@ def send_signal(message):
 
 
 def main():
+    make_device_discoverable()
     start_button = Button(START_PIN)
     quit_button = Button(QUIT_PIN)
     video = Video(VIDEO_PATH)
@@ -40,6 +42,7 @@ def main():
 
     def quit():
         video.quit()
+        print("sending quit signal")
         send_signal(QUIT)
         sleep(1)
         exit()
