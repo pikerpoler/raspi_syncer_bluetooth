@@ -18,7 +18,7 @@ def main():
     start_input.when_pressed = start
 
     while True:
-        pause
+        pass
 
 
 if __name__ == "__main__":
