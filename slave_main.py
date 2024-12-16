@@ -19,24 +19,26 @@ def make_device_discoverable():
         print(f"Error enabling discoverability: {e}")
 
 
+def connect_to_server():
+    server_sock = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
+    server_sock.bind(("", communication_port))
+    server_sock.listen(communication_port)
+    print("Waiting for connection...")
+
+    client_sock, client_info = server_sock.accept()
+    print(f"Connection accepted from {client_info}")
+
+    return client_sock
+
+
 # Start listening for incoming connections
-def receive_signal():
+def receive_signal(client_sock):
     try:
-        server_sock = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
-        server_sock.bind(("", communication_port))
-        server_sock.listen(communication_port)
-        print("Waiting for connection...")
-
-        client_sock, client_info = server_sock.accept()
-        print(f"Connection accepted from {client_info}")
-
         data = client_sock.recv(1024).decode("utf-8")
         print(f"Received: {data}")
 
-        client_sock.close()
-        server_sock.close()
-
         return data
+
     except bluetooth.BluetoothError as e:
         print(f"Bluetooth error: {e}")
     except KeyboardInterrupt:
@@ -45,6 +47,7 @@ def receive_signal():
 
 if __name__ == "__main__":
     make_device_discoverable()
+    client_sock = connect_to_server()
 
     video = Video(VIDEO_PATH)
     while True:
@@ -54,4 +57,5 @@ if __name__ == "__main__":
             video.play()
         elif signal == QUIT:
             video.quit()
+            client_sock.close()
             break
