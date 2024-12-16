@@ -11,6 +11,8 @@ from constants import communication_port, START
 INPUT_PIN = 17
 last_event = time.time()
 
+time.sleep(0.2)
+
 
 def connect_to_server():
     server_sock = bluetooth.BluetoothSocket(bluetooth.RFCOMM)

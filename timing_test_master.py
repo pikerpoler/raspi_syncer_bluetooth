@@ -31,6 +31,7 @@ def main():
     out_connection = LED(CONNECTION_PIN)
 
     def start():
+        print("starting")
         out_connection.on()
         send_signal(START)
         sleep(1)
