@@ -13,7 +13,7 @@ echo "Installing OMXPlayer..."
 sudo apt install -y omxplayer
 
 sudo apt install -y vlc
-sudo pip3 install --quiet --yes python-vlc
+sudo pip3 install --quiet python-vlc
 
 # Install Python dependencies with pip3
 echo "Installing Python dependencies with pip3..."
