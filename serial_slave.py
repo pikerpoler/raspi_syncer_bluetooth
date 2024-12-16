@@ -5,7 +5,7 @@ from gpiozero import Button
 from video_controller import Video
 from constants import VIDEO_PATH
 
-START_PIN = 17
+START_PIN = 27
 
 
 def main():
