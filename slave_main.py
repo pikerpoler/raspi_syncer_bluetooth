@@ -51,7 +51,7 @@ if __name__ == "__main__":
 
     video = Video(VIDEO_PATH)
     while True:
-        signal = receive_signal()
+        signal = receive_signal(client_sock)
         if signal == START:
             print("Start signal received!")
             video.play()
