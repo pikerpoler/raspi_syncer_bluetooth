@@ -9,9 +9,6 @@ from utils import make_device_discoverable
 from constants import communication_port, START
 
 INPUT_PIN = 17
-last_event = time.time()
-
-time.sleep(0.2)
 
 
 def connect_to_server():
@@ -36,19 +33,20 @@ def receive_signal(client_sock):
         print(f"Bluetooth error: {e}")
 
 
-def high_signal():
-    tmp = last_event
-    last_event = time.time()
-    print(f"Signal received: HIGH. elapsed: {last_event - tmp}")
-
-
-def low_signal():
-    tmp = last_event
-    last_event = time.time()
-    print(f"Signal received: LOW. elapsed: {last_event - tmp}")
-
-
 def main():
+
+    last_event = time.time()
+
+    def high_signal():
+        tmp = last_event
+        last_event = time.time()
+        print(f"Signal received: HIGH. elapsed: {last_event - tmp}")
+
+    def low_signal():
+        tmp = last_event
+        last_event = time.time()
+        print(f"Signal received: LOW. elapsed: {last_event - tmp}")
+
     make_device_discoverable()
     client_sock = connect_to_server()
 
