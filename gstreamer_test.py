@@ -1,16 +1,21 @@
 #!/usr/bin/python
 
+import gi
+
+gi.require_version("Gtk", "2.0")
+gi.require_version("Gst", "1.0")
 from gi.repository import Gtk as gtk
+from gi.repository import Gst as gst
 from constants import VIDEO_PATH
 
 # pygst.require("0.10")
-import gst
+# import gst
 
 # import pygtk
 
 
 # pygtk.require("2.0")
-import gtk
+# import gtk
 
 # this is very important, without this, callbacks from gstreamer thread
 # will messed our program up
