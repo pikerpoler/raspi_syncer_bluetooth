@@ -54,8 +54,8 @@ def main():
     client_sock = connect_to_server()
 
     input = Button(INPUT_PIN)
-    input.when_pressed = high_signal
-    input.when_released = low_signal
+    input.when_pressed = low_signal
+    input.when_released = high_signal
 
     while True:
         signal = receive_signal(client_sock)

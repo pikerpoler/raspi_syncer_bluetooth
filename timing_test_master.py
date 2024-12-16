@@ -32,8 +32,8 @@ def main():
 
     def start():
         print("starting")
-        out_connection.on()
         send_signal(START)
+        out_connection.on()
         sleep(1)
         out_connection.off()
 
