@@ -39,6 +39,7 @@ def main():
 
     button.when_pressed = start
 
+    print("starting main loop")
     while True:
         pass
 
