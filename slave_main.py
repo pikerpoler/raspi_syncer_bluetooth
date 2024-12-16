@@ -27,7 +27,7 @@ def connect_to_server():
 
     client_sock, client_info = server_sock.accept()
     print(f"Connection accepted from {client_info}")
-
+    server_sock.close()
     return client_sock
 
 
@@ -35,17 +35,16 @@ def connect_to_server():
 def receive_signal(client_sock):
     try:
         data = client_sock.recv(1024).decode("utf-8")
-        print(f"Received: {data}")
-
         return data
 
     except bluetooth.BluetoothError as e:
         print(f"Bluetooth error: {e}")
     except KeyboardInterrupt:
+        print("Keyboard interrupt received. Exiting... (is this really necessary?)")
         exit()
 
 
-if __name__ == "__main__":
+def main():
     make_device_discoverable()
     client_sock = connect_to_server()
 
@@ -53,9 +52,12 @@ if __name__ == "__main__":
     while True:
         signal = receive_signal(client_sock)
         if signal == START:
-            print("Start signal received!")
             video.play()
         elif signal == QUIT:
             video.quit()
             client_sock.close()
             break
+
+
+if __name__ == "__main__":
+    main()

@@ -1,7 +1,8 @@
 import bluetooth
 from gpiozero import Button
 
-from constants import slave_mac_adresses, communication_port, START, QUIT
+from video_controller import Video
+from constants import slave_mac_adresses, communication_port, START, QUIT, VIDEO_PATH
 
 sockets = []
 
@@ -24,27 +25,30 @@ def send_signal(message):
     for sock in sockets:
         try:
             sock.send(message)
-            print(f"Sent: {message}")
         except bluetooth.BluetoothError as e:
             print(f"Bluetooth error: {e}")
 
 
-def start():
-    print("start foo")
-    send_signal(START)
-
-
-def quit():
-    print("quit foo")
-    send_signal(QUIT)
-
-
-if __name__ == "__main__":
+def main():
     start_button = Button(START_PIN)
     quit_button = Button(QUIT_PIN)
+    video = Video(VIDEO_PATH)
+
+    def start():
+        video.play()
+        send_signal(START)
+
+    def quit():
+        video.quit()
+        send_signal(QUIT)
+        exit()
 
     start_button.when_pressed = start
     quit_button.when_pressed = quit
 
     while True:
         pass
+
+
+if __name__ == "__main__":
+    main()
