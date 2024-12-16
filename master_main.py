@@ -39,6 +39,7 @@ def main():
     def start():
         video.play()
         send_signal(START)
+        print("sent start signal")
 
     def quit():
         video.quit()
