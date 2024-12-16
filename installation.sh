@@ -8,10 +8,6 @@ sudo apt update -y
 echo "Installing Bluetooth dependencies..."
 sudo apt install -y bluetooth bluez python3-bluez
 
-# Install DBus dependencies
-echo "Installing DBus dependencies..."
-sudo apt-get update -y && sudo apt-get install -y libdbus-1{,-dev}
-
 # Install OMXPlayer
 echo "Installing OMXPlayer..."
 sudo apt install -y omxplayer
