@@ -3,20 +3,28 @@ from gpiozero import Button
 
 from constants import slave_mac_adresses, communication_port, START, QUIT
 
+sockets = []
+
+for mac_address in slave_mac_adresses:
+    print(f"connecting to {mac_address}")
+    try:
+        sock = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
+        sock.connect((mac_address, communication_port))
+        sockets.append(sock)
+    except bluetooth.BluetoothError as e:
+        print(f"Bluetooth error: {e}")
+
+
 START_PIN = 18
 QUIT_PIN = 23
 
 
 # Create a socket and send the message
 def send_signal(message):
-    for mac_address in slave_mac_adresses:
-        print(f"Sending signal to {mac_address}")
+    for sock in sockets:
         try:
-            sock = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
-            sock.connect((mac_address, communication_port))
             sock.send(message)
             print(f"Sent: {message}")
-            sock.close()
         except bluetooth.BluetoothError as e:
             print(f"Bluetooth error: {e}")
 

@@ -39,6 +39,8 @@ def receive_signal():
         return data
     except bluetooth.BluetoothError as e:
         print(f"Bluetooth error: {e}")
+    except KeyboardInterrupt:
+        exit()
 
 
 if __name__ == "__main__":
