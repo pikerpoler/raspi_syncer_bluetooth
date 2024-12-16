@@ -54,6 +54,7 @@ def main():
         if signal == START:
             video.play()
         elif signal == QUIT:
+            print("Received QUIT signal. Exiting...")
             video.quit()
             client_sock.close()
             break

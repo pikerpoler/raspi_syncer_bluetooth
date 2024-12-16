@@ -1,8 +1,12 @@
+from time import sleep
 import bluetooth
 from gpiozero import Button
 
 from video_controller import Video
 from constants import slave_mac_adresses, communication_port, START, QUIT, VIDEO_PATH
+
+START_PIN = 18
+QUIT_PIN = 23
 
 sockets = []
 
@@ -14,10 +18,6 @@ for mac_address in slave_mac_adresses:
         sockets.append(sock)
     except bluetooth.BluetoothError as e:
         print(f"Bluetooth error: {e}")
-
-
-START_PIN = 18
-QUIT_PIN = 23
 
 
 # Create a socket and send the message
@@ -41,6 +41,7 @@ def main():
     def quit():
         video.quit()
         send_signal(QUIT)
+        sleep(1)
         exit()
 
     start_button.when_pressed = start
