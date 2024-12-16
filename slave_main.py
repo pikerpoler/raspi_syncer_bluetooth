@@ -1,7 +1,22 @@
 import bluetooth
+import subprocess
 
 from video_controller import Video
-from constants import communication_port, VIDEO_PATH, START, RESET, QUIT
+from constants import communication_port, VIDEO_PATH, START, QUIT
+
+
+def make_device_discoverable():
+    """
+    Automates the process of making the Raspberry Pi discoverable via Bluetooth.
+    """
+    try:
+        # Start bluetoothctl in subprocess
+        subprocess.run(["bluetoothctl", "power", "on"], check=True)
+        subprocess.run(["bluetoothctl", "discoverable", "on"], check=True)
+        subprocess.run(["bluetoothctl", "pairable", "on"], check=True)
+        print("Device is now discoverable and pairable.")
+    except subprocess.CalledProcessError as e:
+        print(f"Error enabling discoverability: {e}")
 
 
 # Start listening for incoming connections
@@ -27,14 +42,14 @@ def receive_signal():
 
 
 if __name__ == "__main__":
+    make_device_discoverable()
+
     video = Video(VIDEO_PATH)
     while True:
         signal = receive_signal()
         if signal == START:
             print("Start signal received!")
             video.play()
-        elif signal == RESET:
-            video.reset()
         elif signal == QUIT:
             video.quit()
             break

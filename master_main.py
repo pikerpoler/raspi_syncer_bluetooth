@@ -1,7 +1,7 @@
 import bluetooth
 from gpiozero import Button
 
-from constants import slave_mac_adresses, communication_port, START, RESET, QUIT
+from constants import slave_mac_adresses, communication_port, START, QUIT
 
 START_PIN = 18
 QUIT_PIN = 23
