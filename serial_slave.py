@@ -1,4 +1,5 @@
 import time
+from time import sleep
 from gpiozero import Button
 
 from video_controller import Video
@@ -17,7 +18,7 @@ def main():
     start_input.when_pressed = start
 
     while True:
-        pass
+        sleep(0.0005)
 
 
 if __name__ == "__main__":
