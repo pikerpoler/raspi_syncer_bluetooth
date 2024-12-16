@@ -33,21 +33,22 @@ def receive_signal(client_sock):
         print(f"Bluetooth error: {e}")
 
 
-global last_event
-last_event = time.time()
+time_log = [time.time()]
 
 
 def main():
 
     def high_signal():
-        tmp = last_event
-        last_event = time.time()
-        print(f"Signal received: HIGH. elapsed: {last_event - tmp}")
+        last_event = time_log[-1]
+        now = time.time()
+        time_log.append(now)
+        print(f"Signal received: HIGH. elapsed: {now - last_event}")
 
     def low_signal():
-        tmp = last_event
-        last_event = time.time()
-        print(f"Signal received: LOW. elapsed: {last_event - tmp}")
+        last_event = time_log[-1]
+        now = time.time()
+        time_log.append(now)
+        print(f"Signal received: LOW. elapsed: {now -last_event}")
 
     make_device_discoverable()
     client_sock = connect_to_server()
@@ -59,9 +60,10 @@ def main():
     while True:
         signal = receive_signal(client_sock)
         if signal == START:
-            tmp = last_event
-            last_event = time.time()
-            print(f"Signal received: START. elapsed: {last_event - tmp}")
+            last_event = time_log[-1]
+            now = time.time()
+            time_log.append(now)
+            print(f"Signal received: START. elapsed: {now - last_event}")
 
 
 if __name__ == "__main__":
