@@ -33,9 +33,11 @@ def receive_signal(client_sock):
         print(f"Bluetooth error: {e}")
 
 
-def main():
+global last_event
+last_event = time.time()
 
-    last_event = time.time()
+
+def main():
 
     def high_signal():
         tmp = last_event
