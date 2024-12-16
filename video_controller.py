@@ -16,10 +16,10 @@ class Video:
 
     def __init__(self, video_path):
         self.player = OMXPlayer(Path(video_path), args=["--loop"])
-        sleep(3)
+        # sleep(3)
         self.player.set_position(0)
-        self.player.pause()
-        self.length = self.player.metadata()["mpris:length"]
+        # self.player.pause()
+        # self.length = self.player.metadata()["mpris:length"]
 
     def play_timed(self, time_string):
         time = parse_time(time_string)
@@ -41,7 +41,7 @@ class Video:
 
     def play(self):
         self.player.set_position(0)
-        self.player.play()
+        # self.player.play()
 
     def reset(self):
         self.player.set_position(0)
