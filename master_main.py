@@ -37,9 +37,8 @@ def main():
     video = Video(VIDEO_PATH)
 
     def start():
-        video.play()
         send_signal(START)
-        print("sent start signal")
+        video.play()
 
     def quit_foo():
         print("sending quit signal")

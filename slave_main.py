@@ -36,9 +36,7 @@ def main():
 
     video = Video(VIDEO_PATH)
     while True:
-        print("waiting for signal")
         signal = receive_signal(client_sock)
-        print(f"Received signal: {signal}")
         if signal == START:
             video.play()
         elif signal == QUIT:

@@ -1,9 +1,9 @@
 import bluetooth
-import subprocess
+
 import time
 
 from gpiozero import Button
-from signal import pause
+
 
 from utils import make_device_discoverable
 from constants import communication_port, START

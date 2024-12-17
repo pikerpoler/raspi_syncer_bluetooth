@@ -40,8 +40,11 @@ class Video:
         self.player.play()
 
     def play(self):
-        self.player.set_position(0)
-        # self.player.play()
+        if self.player.is_playing():
+            self.player.pause()
+            self.player.set_position(0)
+        else:
+            self.player.play()
 
     def reset(self):
         self.player.set_position(0)
