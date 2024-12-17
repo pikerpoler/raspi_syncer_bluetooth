@@ -4,18 +4,18 @@ from gpiozero import Button
 
 from video_controller import Video
 from utils import make_device_discoverable
-from constants import slave_mac_adresses, communication_port, START, QUIT, VIDEO_PATH
+from constants import SLAVE_MAC_ADDRESS, COMMUNICATION_PORT, START, QUIT, VIDEO_PATH
 
 START_PIN = 18
 QUIT_PIN = 23
 
 sockets = []
 
-for mac_address in slave_mac_adresses:
+for mac_address in SLAVE_MAC_ADDRESS:
     print(f"connecting to {mac_address}")
     try:
         sock = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
-        sock.connect((mac_address, communication_port))
+        sock.connect((mac_address, COMMUNICATION_PORT))
         sockets.append(sock)
     except bluetooth.BluetoothError as e:
         print(f"Bluetooth error: {e}")

@@ -6,15 +6,15 @@ from gpiozero import Button
 
 
 from utils import make_device_discoverable
-from constants import communication_port, START
+from constants import COMMUNICATION_PORT, START
 
 INPUT_PIN = 17
 
 
 def connect_to_server():
     server_sock = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
-    server_sock.bind(("", communication_port))
-    server_sock.listen(communication_port)
+    server_sock.bind(("", COMMUNICATION_PORT))
+    server_sock.listen(COMMUNICATION_PORT)
     print("Waiting for connection...")
 
     client_sock, client_info = server_sock.accept()

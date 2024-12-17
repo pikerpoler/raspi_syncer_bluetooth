@@ -2,14 +2,14 @@ import bluetooth
 import time
 import threading
 
-from constants import communication_port, slave_mac_adresses
+from constants import COMMUNICATION_PORT, SLAVE_MAC_ADDRESS
 from utils import make_device_discoverable
 
 
 def connect_to_server():
     server_sock = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
-    server_sock.bind(("", communication_port))
-    server_sock.listen(communication_port)
+    server_sock.bind(("", COMMUNICATION_PORT))
+    server_sock.listen(COMMUNICATION_PORT)
     print("Waiting for connection...")
 
     client_sock, client_info = server_sock.accept()
@@ -20,7 +20,7 @@ def connect_to_server():
 
 def connect_to_client():
     sock = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
-    sock.connect((slave_mac_adresses[0], communication_port))
+    sock.connect((SLAVE_MAC_ADDRESS[0], COMMUNICATION_PORT))
     return sock
 
 

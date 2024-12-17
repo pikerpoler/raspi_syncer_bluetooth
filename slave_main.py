@@ -2,13 +2,13 @@ import bluetooth
 
 from video_controller import Video
 from utils import make_device_discoverable
-from constants import communication_port, VIDEO_PATH, START, QUIT
+from constants import COMMUNICATION_PORT, VIDEO_PATH, START, QUIT
 
 
 def connect_to_server():
     server_sock = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
-    server_sock.bind(("", communication_port))
-    server_sock.listen(communication_port)
+    server_sock.bind(("", COMMUNICATION_PORT))
+    server_sock.listen(COMMUNICATION_PORT)
     print("Waiting for connection...")
 
     client_sock, client_info = server_sock.accept()

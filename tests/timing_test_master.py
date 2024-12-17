@@ -2,17 +2,17 @@ from time import sleep
 import bluetooth
 from gpiozero import Button, LED
 
-from constants import slave_mac_adresses, communication_port, START
+from constants import SLAVE_MAC_ADDRESS, COMMUNICATION_PORT, START
 
 CONNECTION_PIN = 17
 BUTTON_PIN = 18
 
 sockets = []
-for mac_address in slave_mac_adresses:
+for mac_address in SLAVE_MAC_ADDRESS:
     print(f"connecting to {mac_address}")
     try:
         sock = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
-        sock.connect((mac_address, communication_port))
+        sock.connect((mac_address, COMMUNICATION_PORT))
         sockets.append(sock)
     except bluetooth.BluetoothError as e:
         print(f"Bluetooth error: {e}")
