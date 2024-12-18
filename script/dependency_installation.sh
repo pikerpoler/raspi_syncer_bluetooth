@@ -18,6 +18,6 @@ sudo apt install -y python3-pip
 
 # Install Python dependencies with pip3
 echo "Installing Python dependencies with pip3..."
-sudo pip3 install --quiet omxplayer-wrapper pause
+sudo pip3 install --quiet omxplayer-wrapper 
 
 echo "All dependencies have been installed successfully!"

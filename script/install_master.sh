@@ -1,6 +1,11 @@
 echo "Installing dependancies..."
 /bin/bash  /home/pi/raspi_syncer_bluetooth/script/dependency_installation.sh
 
-# Set lunch_master.sh to run at startup using crontab
-echo "Configuring lunch_master.sh to run at startup..."
-(crontab -l 2>/dev/null; echo "@reboot /bin/bash /home/pi/raspi_syncer_bluetooth/script/lunch_master.sh") | crontab -
+# Add lunch_master.sh to .bashrc for startup
+BASHRC_LINE="/bin/bash /home/pi/raspi_syncer_bluetooth/script/lunch_master.sh""
+if ! grep -Fxq "$BASHRC_LINE" ~/.bashrc; then
+    echo "Adding lunch_master.sh to .bashrc..."
+    echo "$BASHRC_LINE" >> ~/.bashrc
+else
+    echo "lunch_master.sh is already in .bashrc."
+fi
