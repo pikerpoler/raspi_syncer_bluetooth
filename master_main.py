@@ -13,12 +13,16 @@ sockets = []
 
 for mac_address in SLAVE_MAC_ADDRESS:
     print(f"connecting to {mac_address}")
-    try:
-        sock = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
-        sock.connect((mac_address, COMMUNICATION_PORT))
-        sockets.append(sock)
-    except bluetooth.BluetoothError as e:
-        print(f"Bluetooth error: {e}")
+    while True:
+        try:
+            sock = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
+            sock.connect((mac_address, COMMUNICATION_PORT))
+            sockets.append(sock)
+        except bluetooth.BluetoothError as e:
+            print(f"Bluetooth error: {e}")
+        else:
+            print(f"Successfully connected to {mac_address}")
+            break
 
 
 # Create a socket and send the message
