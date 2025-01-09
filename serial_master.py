@@ -18,7 +18,7 @@ def main():
     def start():
         start_connection.on()
         video.play()
-        sleep(0.1)
+        sleep(0.01)
         start_connection.off()
 
     button.when_pressed = start

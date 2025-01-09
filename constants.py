@@ -3,7 +3,7 @@ SLAVE_MAC_ADDRESS = []
 
 COMMUNICATION_PORT = 1
 
-VIDEO_PATH = "/home/pi/videos/timer.mp4"
+VIDEO_PATH = "/home/pi/Videos/timer.mp4"
 
 START = "START"
 QUIT = "QUIT"

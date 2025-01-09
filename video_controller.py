@@ -15,7 +15,7 @@ def parse_time(time_string):
 class Video:
 
     def __init__(self, video_path):
-        self.player = OMXPlayer(Path(video_path), args=["--loop"])
+        self.player = OMXPlayer(Path(video_path), args=["--loop", "--live"])
         self.player.set_position(0)
 
     def play(self):

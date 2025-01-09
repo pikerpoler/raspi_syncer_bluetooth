@@ -1,6 +1,6 @@
 import time
 from gpiozero import Button
-from signal import pause
+
 
 from video_controller import Video
 from constants import VIDEO_PATH
