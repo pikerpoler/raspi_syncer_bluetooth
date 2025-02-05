@@ -1,3 +1,7 @@
+#!/bin/bash
+
+/bin/bash  /home/pi/raspi_syncer_bluetooth/script/set_video_name.sh
+
 echo "Installing dependancies..."
 /bin/bash  /home/pi/raspi_syncer_bluetooth/script/dependency_installation.sh
 
