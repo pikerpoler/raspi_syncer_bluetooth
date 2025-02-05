@@ -1,4 +1,4 @@
-import time
+from time import sleep
 from gpiozero import Button
 
 
@@ -9,6 +9,7 @@ START_PIN = 27
 
 
 def main():
+    sleep(10)
     video = Video(VIDEO_PATH)
 
     def start():

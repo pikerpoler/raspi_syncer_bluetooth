@@ -4,7 +4,7 @@ from gpiozero import Button, LED
 from video_controller import Video
 from constants import VIDEO_PATH
 
-START_PIN = 17
+START_PIN = 16
 BUTTON_PIN = 18
 QUIT_PIN = 23
 
@@ -17,12 +17,12 @@ def main():
 
     def start():
         start_connection.on()
-        video.play()
         sleep(0.01)
         start_connection.off()
+        video.play()
 
     button.when_pressed = start
-
+    
     print("starting main loop")
     while True:
         pass
